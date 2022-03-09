@@ -1,0 +1,24 @@
+syntax = "proto3";
+package core;
+option go_package = "core/v1/;core";
+
+message Stat {
+    string skill = 1; 
+    int64 currentXp = 2;
+    int64 currentRank = 3;
+    int32 level = 4;
+}
+
+service CoreService {
+    rpc AddStats (SendStatsRequest) returns (SendStatsResponse);    
+}
+
+message SendStatsRequest {
+    string characterName = 1;
+    repeated Stat stats = 2;
+}
+
+message SendStatsResponse {
+    string status = 1;
+}
+
